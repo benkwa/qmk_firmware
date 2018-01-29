@@ -52,13 +52,10 @@ static keyframe_animation_t lcd_layer_display = {
 
 // The color animation animates the LCD color when you change layers
 static keyframe_animation_t color_animation = {
-    .num_frames = 2,
+    .num_frames = 1,
     .loop = false,
-    // Note that there's a 200 ms no-operation frame,
-    // this prevents the color from changing when activating the layer
-    // momentarily
-    .frame_lengths = {gfxMillisecondsToTicks(200), gfxMillisecondsToTicks(500)},
-    .frame_functions = {keyframe_no_operation, lcd_backlight_keyframe_animate_color},
+    .frame_lengths = {gfxMillisecondsToTicks(100)},
+    .frame_functions = {lcd_backlight_keyframe_animate_color},
 };
 
 void initialize_user_visualizer(visualizer_state_t* state) {
